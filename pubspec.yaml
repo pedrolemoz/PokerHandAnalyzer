@@ -1,0 +1,9 @@
+name: poker_analyzer
+version: 0.0.1
+description: A poker hand analyzer
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+dependencies:
+ 
+dev_dependencies:
+  test: 
