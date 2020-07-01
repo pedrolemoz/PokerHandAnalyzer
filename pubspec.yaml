@@ -1,9 +1,40 @@
-name: poker_analyzer
-version: 0.0.1
+name: poker_hand_analyzer
 description: A poker hand analyzer
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: ">=2.7.0 <3.0.0"
+
 dependencies:
- 
+  flutter:
+    sdk: flutter
+  provider:
+
+  cupertino_icons: ^0.1.3
+
 dev_dependencies:
-  test: 
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  fonts:
+  - family: Manrope
+    fonts:
+    - asset: fonts/Manrope-Regular.otf
+      weight: 400
+    - asset: fonts/Manrope-SemiBold.otf
+      weight: 600
+    - asset: fonts/Manrope-Bold.otf
+      weight: 700
+
+  assets:
+    - assets/clubs/
+    - assets/diamonds/
+    - assets/hearts/
+    - assets/spades/

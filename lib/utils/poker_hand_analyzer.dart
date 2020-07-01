@@ -1,28 +1,7 @@
-import 'package:poker_analyzer/card.dart';
+import 'package:flutter/foundation.dart';
+import 'package:poker_hand_analyzer/utils/poker_card.dart';
 
-/**
- * Initial implementation, probably with poor performance
- */
-
-void main() {
-  List<Card> firstHand = [
-    Card(3, 'Diamonds'),
-    Card(11, 'Spades'),
-    Card(8, 'Spades'),
-    Card(4, 'Hearts'),
-    Card(2, 'Spades'),
-  ];
-
-  List<Card> secondHand = [
-    Card(10, 'Diamonds'),
-    Card(11, 'Diamonds'),
-    Card(12, 'Diamonds'),
-    Card(13, 'Diamonds'),
-    Card(14, 'Diamonds'),
-  ];
-
-  print(HandChecker.comparator(firstHand: firstHand, secondHand: secondHand));
-}
+/// Initial implementation, probably with poor performance
 
 class HandChecker {
   static const List handPower = [
@@ -38,12 +17,12 @@ class HandChecker {
     'Royal Flush',
   ];
 
-  static String comparator({List<Card> firstHand, List<Card> secondHand}) {
+  static int comparator({
+    @required List<PokerCard> firstHand,
+    @required List<PokerCard> secondHand,
+  }) {
     final int firstIndex = handPower.indexOf(checker(firstHand));
     final int secondIndex = handPower.indexOf(checker(secondHand));
-
-    print(firstIndex);
-    print(secondIndex);
 
     if (firstIndex == 0 && secondIndex == 0) {
       final int firstHigherCard = firstHand.map((e) => e.value).reduce(
@@ -51,15 +30,13 @@ class HandChecker {
       final int secondHigherCard = secondHand.map((e) => e.value).reduce(
           (value, element) => value = value < element ? element : value);
 
-      return firstHigherCard > secondHigherCard
-          ? 'Player 1 won'
-          : 'Player 2 won';
+      return firstHigherCard > secondHigherCard ? 1 : 2;
     }
 
-    return firstIndex > secondIndex ? 'Player 1 won' : 'Player 2 won';
+    return firstIndex > secondIndex ? 1 : 2;
   }
 
-  static checker(List<Card> cards) {
+  static checker(List<PokerCard> cards) {
     // Sorting cards by value
     cards.sort((a, b) => a.value.compareTo(b.value));
 
